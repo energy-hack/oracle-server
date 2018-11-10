@@ -20,7 +20,7 @@ def hello():
 @app.route("/energy_ticker/get_tick")
 def funcname():
     timestamp = datetime.datetime.now(pytz.timezone('Europe/Moscow')).strftime("%d.%m.%Y %H:%M:00")
-    value = energy_ticker_data[timestamp][0]['value']
+    value = float((energy_ticker_data[timestamp][0]['value']).replace(' ', ''))
     
     response_dict = {"timestamp": timestamp, "value": value}
     response = json.dumps(response_dict)
