@@ -19,8 +19,13 @@ def hello():
 
 @app.route("/energy_ticker/get_tick")
 def funcname():
-    timestamp = datetime.datetime.now(pytz.timezone('Europe/Moscow')).strftime("%d.%m.%Y %H:%M:00")
-    value = float((energy_ticker_data[timestamp][0]['value']).replace(' ', ''))
+    # get timestamp which has seconds only as 00 or 10 or 20 or 30 or 40 or 50
+    timestamp_datetime = datetime.datetime.now(pytz.timezone('Europe/Moscow'))
+    correct_seconds = str(int(timestamp_datetime.second/10))+'0'
+    timestamp = timestamp_datetime.strftime("%d.%m.%Y %H:%M:" + correct_seconds)
+    
+    # get corresponding value from our emulated database
+    value = float((energy_ticker_data[timestamp]['value']).replace(' ', ''))
     
     response_dict = {"timestamp": timestamp, "value": value}
     response = json.dumps(response_dict)
