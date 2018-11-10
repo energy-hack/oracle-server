@@ -1,0 +1,14 @@
+{
+    "time_stamp_a": {
+        "avalue": 101,
+        "bvalue": -101
+    },
+    "time_stamp_b": {
+        "avalue": 102,
+        "bvalue": -102
+    },
+    "time_stamp_c": {
+        "avalue": 103,
+        "bvalue": -103
+    }
+}
